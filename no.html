@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+<head>
+<!--    <meta charset="UTF-8">  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+  <title>Leaflet sample</title>
+      <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+      <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+   <!--  <form onsubmit="mjocksnd()">
+      RFid: <input type="text" name="fname" value="RA18"><br>
+      <input type="submit" value="Submit form">
+    </form>  -->
+    <!--  // var track=[12.82122, 80.03829];
+          
+      //function mjocksnd(){
+          //var socket = io.connect('http://localhost:4000');
+          //var rfid = document.getElementById('rfid');
+          //data = "gangadhar hi shaktiman hai";
+          //console.log(rfid);
+          //var track=[12.82122, 80.03829];
+          //socket.on('chat', function(data){
+          //console.log(data);
+           // });
+        //  }
+     -->  
+    <div id = "map" style = "width: 500px; height: 500px"></div> 
+    <script type="text/javascript">
+      
+      var socket = io.connect('http://localhost:4000');
+         socket.on('chat', function(data1){
+          console.log(data1);
+            });
+
+         // Creating map options
+         var mapOptions = {
+            center: [12.82122, 80.03829],
+            zoom: 10
+         }
+         
+         // Creating a map object
+         var map = new L.map('map', mapOptions);
+         
+         // Creating a Layer object
+         var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+         var marker = new L.Marker([12.82122, 80.03829]);
+         //var marker = new L.Marker(track);
+         
+         marker.addTo(map);
+
+         marker.bindPopup('tatti').openPopup();
+         marker.addTo(map); 
+         
+         // Adding layer to the map
+         map.addLayer(layer);
+      </script>
+
+
+</body>
+</html> 
